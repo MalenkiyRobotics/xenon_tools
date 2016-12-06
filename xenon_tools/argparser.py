@@ -5,16 +5,14 @@ import sys
 
 
 class Args:
-    obj = None
-
     d = defaultdict(list)
     synonyms = defaultdict(list)
     callbacks = defaultdict(list)
 
-    def __init__(self, obj):
-        self.obj = obj
-
-    def register(self, word, callback, n_args=0, synonyms=[]):
+    def register(self, callback, n_args=0, synonyms=None):
+        if not synonyms:
+            synonyms = []
+        word = callback.__name__
         if not self.d[word]:
             self.d[word] = [callback, n_args]
             self.synonyms[word] = synonyms
@@ -45,22 +43,3 @@ class Args:
                 if word in self.synonyms[key]:
                     return key
         return None
-
-
-if __name__ == "__main__":
-    class testclass:
-        def playfrom(self, n):
-            print 'playing from', n
-
-        def shuffle(self):
-            print 'shuffling'
-
-
-    tc = testclass()
-
-    args = Args(tc)
-    args.register('from', tc.playfrom, 1, ['playfrom', 'fr'])
-    args.register('shuf', tc.shuffle, 0, ['shuff', 'shuffle'])
-
-    print args.synonyms
-    args.act(sys.argv[1:])
