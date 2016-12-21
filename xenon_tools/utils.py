@@ -48,6 +48,11 @@ def find_file(filename, basedir, recursive=True, halt_on_first=False):
     return found
 
 
+def is_int(s):
+    if s[0] in ('-', '+'):
+        return s[1:].isdigit()
+    return s.isdigit()
+
 class MediaDetails:
     duration_seconds = 0
     duration_human = ''

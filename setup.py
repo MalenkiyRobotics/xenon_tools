@@ -5,7 +5,7 @@ from distutils.core import setup
 setup(
     name='xenon_tools',
     packages=['xenon_tools'],  # this must be the same as the name above
-    version='0.1.6',
+    version='0.1.7',
     description='Tools for Xenon',
     author='minus79',
     author_email='gergely06@gmail.com',
