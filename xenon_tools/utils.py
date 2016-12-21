@@ -62,5 +62,3 @@ class MediaDetails:
         self.frame_rate = frame_rate
         self.no_channels = no_channels
 
-
-print find_file('DSC_1328.NEF', '/home/gkovacs/Data/Photos')
